@@ -1,19 +1,15 @@
 class Solution {
 public:
     string makeGood(string s) {
-        while (s.size() > 1) {
-            bool find = false;
-            for (int i = 0; i < s.size() - 1; i++) {
-                char currChar = s[i], nextChar = s[i + 1];
-                if (abs(currChar - nextChar) == 32) {
-                    s = s.substr(0, i) + s.substr(i + 2);
-                    find = true;
-                    break;
-                }
+        int end = 0;
+        for (int cur = 0; cur < s.size(); cur++) {
+            if (end > 0 && abs(s[cur] - s[end - 1]) == 32)
+                end--;
+            else {
+                s[end] = s[cur];
+                end++;
             }
-            if (!find)
-                break;
         }
-        return s;
+        return s.substr(0, end);
     }
 };
