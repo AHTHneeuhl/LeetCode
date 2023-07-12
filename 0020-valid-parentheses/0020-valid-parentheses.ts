@@ -1,5 +1,5 @@
 function isValid(s: string): boolean {
-    const look: { [key: string]: string } = {
+    const lookup: { [key: string]: string } = {
         '[': ']',
         '(': ')',
         '{': '}',
@@ -7,9 +7,9 @@ function isValid(s: string): boolean {
     const stack: string[] = [];
 
     for (const ch of s) {
-        if (ch in look) {
+        if (ch in lookup) {
             stack.push(ch);
-        } else if (!stack.length || ch !== look[stack.pop()]) {
+        } else if (!stack.length || ch !== lookup[stack.pop()]) {
             return false;
         }
     }
