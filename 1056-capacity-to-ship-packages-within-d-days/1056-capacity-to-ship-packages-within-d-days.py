@@ -13,7 +13,6 @@ class Solution:
         return l
 
 
-    
     def feasible(self, weights: List[int], c: int, days: int) -> bool:
         days_needed, current_load = 1, 0
 
