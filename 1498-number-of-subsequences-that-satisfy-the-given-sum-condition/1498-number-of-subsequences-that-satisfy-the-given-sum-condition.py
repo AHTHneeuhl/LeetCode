@@ -5,11 +5,13 @@ class Solution:
         nums.sort()
         
         res = 0
+        left, right = 0, n - 1
         
-        for left in range(n):
-            right = bisect.bisect_right(nums, target - nums[left]) - 1
-            
-            if right >= left:
-                res += pow(2, right - left, MOD)
+        while left <= right:
+            if nums[left] + nums[right] <= target:
+                res = (res + pow(2, right - left, MOD)) % MOD
+                left += 1
+            else:
+                right -= 1
                 
-        return res % MOD
+        return res
