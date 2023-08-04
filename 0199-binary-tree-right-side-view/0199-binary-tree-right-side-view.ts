@@ -13,10 +13,17 @@
  */
 
 function rightSideView(root: TreeNode | null): number[] {
-    if (!root) return [];
-
-    const right: number[] = rightSideView(root.right);
-    const left: number[] = rightSideView(root.left);
-
-    return [root.val, ...right, ...left.slice(right.length)];
+    const view: number[] = [];
+    if (root) {
+        let level: TreeNode[] = [root];
+        while (level.length > 0) {
+            view.push(level[level.length - 1].val);
+            level = level.reduce<TreeNode[]>((nextLevel, node) => {
+                if (node.left) nextLevel.push(node.left);
+                if (node.right) nextLevel.push(node.right);
+                return nextLevel;
+            }, []);
+        }
+    }
+    return view;
 };
