@@ -35,12 +35,20 @@ function search(nums: number[], target: number): boolean {
   }
 
   return false;
-};
+}
 
-function isBinarySearchHelpful(nums: number[], start: number, element: number): boolean {
+function isBinarySearchHelpful(
+  nums: number[],
+  start: number,
+  element: number,
+): boolean {
   return nums[start] !== element;
 }
 
-function existsInFirst(nums: number[], start: number, element: number): boolean {
+function existsInFirst(
+  nums: number[],
+  start: number,
+  element: number,
+): boolean {
   return nums[start] <= element;
 }
