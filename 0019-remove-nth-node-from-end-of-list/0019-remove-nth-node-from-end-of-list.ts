@@ -15,22 +15,20 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
     let slow: ListNode | null = head;
     
     for (let i = 0; i < n; i++) {
-        if (fast === null) {
-            return head; // Invalid scenario, n is out of range
-        }
+        if (!fast) return head;
         fast = fast.next;
     }
     
-    if (fast === null) {
-        return head.next; // Remove the first node
+    if (!fast) {
+        return head.next;
     }
     
-    while (fast.next !== null) {
+    while (fast.next) {
         fast = fast.next;
         slow = slow!.next;
     }
     
-    slow!.next = slow!.next!.next; // Remove the nth node from the end
+    slow!.next = slow!.next!.next;
     
     return head;
 };
